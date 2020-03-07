@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+{% block content %}
+<div dir="rtl">
+    <div class="jumbotron">
+        <h1> הסבר על מאגר הנתונים</h1>
+    </div>
+
+    <div>
+        <h3>סרטים הם בין הבילויים הנפוצים ביותר בעולם</h3>
+
+        <p>
+            כיום צפייה בסרטים הפך להיות דבר מאוד פופולרי ויותר ויותר סרטים יוצאים לאור. כיום למפיקי הסרטים אין אתר אינטרנט המאפשר להם לקבל נתונים סטטיסטים ועובדתיים על סרטים שכבר נעשו. מדוע אנשים דרגו לב דווקא את הסרט הזה בדירוג נמוך ולמה את הסרט הזה בדירוג גבוהה והאם סרט שהשקעה הכספית שלו קצת יותר גבוהה יזכה  להכנסה גבוהה בצורה משמעותית.
+            ובנוסף לכך  כיום לא קיים ממשק שמאפשר לצופים שבבית לבחור את הסרט בצורה המתאימה להם כלומר אם הם אוהבים קומדיה האתר יציג להם את חמשת סרטי הקומדיה הטובים ביותר שדורגו על ידי המשתמש וגם יאפשר  להם לקבל תקציר קצר על הסרט, המשתמשים יוכלו גם לבחור את טווח אורך הסרט המתאים להם מכיוון שישנם כאלו שאוהבים סרטים ארוכים יותר וישנם שאוהבים קצרים יותר.
+
+            הבאתי שני מאגרי נתונים שבאחד מהם כלול התקציב
+            שקיבל הסרט ובשני כלולה ההכנסה שלו.
+            מאגרי המידע מכילים בשניהם גם את התקציר של הסרט, מספר ההצבעות, הדירוג הסופי מ-1 עד 10, אורך הסרט בדקות, הז'אנר שלו, זמן היציאה שלו, מאיזה גיל
+            מותר לצפות בו, השם שלו והמספר שלו ברשימה (לא רשימה של דירוג)
+        </p>
+        <marquee scrollamount="5"
+                 direction="left"
+                 behavior="scroll">
+            <img src="https://upload.wikimedia.org/wikipedia/he/thumb/2/2e/%D7%A6%27%D7%90%D7%A8%D7%9C%D7%99_%D7%95%D7%97%D7%A6%D7%99.jpg/250px-%D7%A6%27%D7%90%D7%A8%D7%9C%D7%99_%D7%95%D7%97%D7%A6%D7%99.jpg" style="width: 220px; height: 343px;">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/b0/Avatar-Teaser-Poster.jpg/220px-Avatar-Teaser-Poster.jpg" style="width: 220px; height: 343px;">
+            <img src="https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg" style="width: 220px; height: 343px;">
+            <img src="https://upload.wikimedia.org/wikipedia/en/1/19/Titanic_%28Official_Film_Poster%29.png" style="width: 220px; height: 343px;">
+            <img src="https://images-na.ssl-images-amazon.com/images/I/A1yhtTjLO%2BL._AC_SY679_.jpg" style="width: 220px; height: 343px;">
+            <img src="https://resizing.flixster.com/0JU4kyqhaQTQE8HkErgY5xk81IQ=/fit-in/278x400/v1.bTsxMzE5MDI4NjtqOzE4Mzc3OzEyMDA7MTk0NDsyODgw" style="width: 220px; height: 343px;">
+            <img src="https://regalcdn.azureedge.net/BadBoysforLife/HO00009996/TV_SmallPosterImage/20191125-090126975.jpg" style="width: 220px; height: 343px;">
+            <img src="https://images.fandango.com/ImageRenderer/200/0/redesign/static/img/default_poster.png/0/images/masterrepository/Fandango/185800/Frozen25d92873c60c39.jpg" style="width: 220px; height: 343px;" />
+            <img src="https://upload.wikimedia.org/wikipedia/he/3/3f/3375S2R-lg.jpg" style="width: 220px; height: 343px;">
+            <img src="https://m.media-amazon.com/images/M/MV5BZmUyMDEyOTgtZmUwOS00NTdkLThlNzctNTM1ODQ4M2VhMjdhXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX182_CR0,0,182,268_AL_.jpg" style="width: 220px; height: 343px;">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/46/Charlie_and_the_chocolate_factory_poster2.jpg/220px-Charlie_and_the_chocolate_factory_poster2.jpg" style="width: 220px; height: 343px;">
+            <img src="https://upload.wikimedia.org/wikipedia/he/thumb/b/b3/Snuker_kraza.jpg/250px-Snuker_kraza.jpg" style="width: 220px; height: 343px;">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/29/Dora_and_the_Lost_City_of_Gold_poster.jpg/220px-Dora_and_the_Lost_City_of_Gold_poster.jpg" style="width: 220px; height: 343px;">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/4f/Frozen_2_poster.jpg/220px-Frozen_2_poster.jpg" style="width: 220px; height: 343px;">
+            <img src="https://upload.wikimedia.org/wikipedia/en/9/9a/Aladdin_%28Official_2019_Film_Poster%29.png" style="width: 220px; height: 343px;">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/6d/Jurassic_Park_III_poster.jpg/220px-Jurassic_Park_III_poster.jpg" style="width: 220px; height: 343px;">
+        </marquee>
+
+        <p>
+
+        </p>
+
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td> שם מאגר הנתונים </td>
+                <td> הסבר</td>
+                <td> לינק</td>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr>
+                <td>Movie name and budget</td>
+                <td>מאגר הנתונים על סרטים ותקציבם</td>
+                <td> <a href="{{ url_for('dataSet1') }}">לינק למאגר הנתונים</a></td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr>
+                <td>Movie name and income</td>
+                <td>מאגר הנתונים על סרטים והכנסתם</td>
+                <td> <a href="{{ url_for('dataSet2') }}">לינק למאגר הנתונים</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<style>
+    body {
+        background-color: #858a88a6;
+        color: black;
+    }
+
+    table {
+        color: #EDF5E1;
+        background-color: #05386B;
+    }
+</style>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>f2dacf73-a16d-4516-b1dd-9b636c50fe9a</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <ProjectTypeGuids>{789894c7-04a9-4a11-a6b5-3f4435165112};{1b580a1a-fdb3-4b32-83e1-6407eb2722e6};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <StartupFile>runserver.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <LaunchProvider>Web launcher</LaunchProvider>
+    <WebBrowserUrl>http://localhost</WebBrowserUrl>
+    <OutputPath>.</OutputPath>
+    <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
+    <Name>projecttichonetnir</Name>
+    <RootNamespace>projecttichonetnir</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="projecttichonetnir\models\LocalDatabaseRoutines.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="projecttichonetnir\models\QueryFormStracture.py" />
+    <Compile Include="runserver.py" />
+    <Compile Include="projecttichonetnir\__init__.py" />
+    <Compile Include="projecttichonetnir\views.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="projecttichonetnir\" />
+    <Folder Include="projecttichonetnir\models\" />
+    <Folder Include="projecttichonetnir\models\__pycache__\" />
+    <Folder Include="projecttichonetnir\static\" />
+    <Folder Include="projecttichonetnir\static\content\" />
+    <Folder Include="projecttichonetnir\static\fonts\" />
+    <Folder Include="projecttichonetnir\static\data\" />
+    <Folder Include="projecttichonetnir\static\img\" />
+    <Folder Include="projecttichonetnir\static\scripts\" />
+    <Folder Include="projecttichonetnir\templates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="projecttichonetnir\models\__pycache__\LocalDatabaseRoutines.cpython-38.pyc" />
+    <Content Include="projecttichonetnir\models\__pycache__\QueryFormStracture.cpython-38.pyc" />
+    <Content Include="projecttichonetnir\static\content\bootstrap.css" />
+    <Content Include="projecttichonetnir\static\content\bootstrap.min.css" />
+    <Content Include="projecttichonetnir\static\content\site.css" />
+    <Content Include="projecttichonetnir\static\data\movieNameandbudget.csv" />
+    <Content Include="projecttichonetnir\static\data\movienameandincome.csv" />
+    <Content Include="projecttichonetnir\static\data\users.csv" />
+    <Content Include="projecttichonetnir\static\img\MyImg.jpeg" />
+    <Content Include="projecttichonetnir\templates\login.html" />
+    <Content Include="projecttichonetnir\templates\dataSet1.html" />
+    <Content Include="projecttichonetnir\templates\dataSet2.html" />
+    <Content Include="projecttichonetnir\templates\data.html" />
+    <Content Include="projecttichonetnir\templates\register.html" />
+    <Content Include="requirements.txt" />
+    <Content Include="projecttichonetnir\static\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="projecttichonetnir\static\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="projecttichonetnir\static\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="projecttichonetnir\static\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="projecttichonetnir\static\scripts\bootstrap.js" />
+    <Content Include="projecttichonetnir\static\scripts\bootstrap.min.js" />
+    <Content Include="projecttichonetnir\static\scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="projecttichonetnir\static\scripts\jquery-1.10.2.js" />
+    <Content Include="projecttichonetnir\static\scripts\jquery-1.10.2.min.js" />
+    <Content Include="projecttichonetnir\static\scripts\jquery-1.10.2.min.map" />
+    <Content Include="projecttichonetnir\static\scripts\jquery.validate-vsdoc.js" />
+    <Content Include="projecttichonetnir\static\scripts\jquery.validate.js" />
+    <Content Include="projecttichonetnir\static\scripts\jquery.validate.min.js" />
+    <Content Include="projecttichonetnir\static\scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="projecttichonetnir\static\scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="projecttichonetnir\static\scripts\modernizr-2.6.2.js" />
+    <Content Include="projecttichonetnir\static\scripts\respond.js" />
+    <Content Include="projecttichonetnir\static\scripts\respond.min.js" />
+    <Content Include="projecttichonetnir\static\scripts\_references.js" />
+    <Content Include="projecttichonetnir\templates\about.html" />
+    <Content Include="projecttichonetnir\templates\contact.html" />
+    <Content Include="projecttichonetnir\templates\index.html" />
+    <Content Include="projecttichonetnir\templates\layout.html" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
+  <!-- Specify pre- and post-build commands in the BeforeBuild and 
+       AfterBuild targets below. -->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <AutoAssignPort>True</AutoAssignPort>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

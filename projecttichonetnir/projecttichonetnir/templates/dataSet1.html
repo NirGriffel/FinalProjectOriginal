@@ -1,0 +1,143 @@
+{% extends "layout.html" %}
+{% block content %}
+<div dir="rtl">
+    <div class="Jumbotron">
+        <p><a class="btn btn-primary btn-lg" href="{{ url_for('data') }}">Return</a></p>
+        <h1> מאגר נתונים על הסרטים ותקציבם</h1>
+        <p>מאגר הנתונים הזה כולל בתוכו את שמות הסרטים, תקציבם ועוד</p>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Movieid
+                </th>
+                <th> המספר של הסרט ברשימה </th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    Title
+                </td>
+                <td> השם של הסרט</td>
+            </tr>
+
+            <tr>
+                <td>
+                    Mpaa_rating
+                </td>
+                <td> מאיזה גיל אפשר לצפות בסרט </td>
+
+            </tr>
+            <tr>
+                <td>
+                    Budget
+                </td>
+                <td> תקציב הסרט </td>
+            </tr>
+            <tr>
+                <td>
+                    Release_date
+                </td>
+                <td> תאריך ההוצאה (אבל הוא לא היה כלול במאגר הנתונים)</td>
+            </tr>
+            <tr>
+                <td>
+                    Genre
+                </td>
+                <td> הז'אנר של הסרט</td>
+            </tr>
+            <tr>
+                <td>
+                    Runtime
+                </td>
+                <td> זמן הצפייה של הסרט</td>
+            </tr>
+            <tr>
+                <td>
+                    Rating
+                </td>
+                <td> הדירוג של הסרט מ-1 עד 10</td>
+            </tr>
+            <tr>
+                <td>
+                    Rating_count
+                </td>
+                <td> מספר ההצבעות שדירגו את הסרט</td>
+            </tr>
+            <tr>
+                <td>
+                    Summary
+                </td>
+                <td> התקציר</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background-color: #858a88a6;
+            color: black;
+        }
+
+        .collapsible {
+            background-color: #05386B;
+            color: #EDF5E1;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+        table {
+            color: #EDF5E1;
+            background-color: #05386B;
+        }
+
+        .active, .collapsible:hover {
+            background-color: #555;
+        }
+
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<button type="button" class="collapsible">DataBase</button>
+<div class="content">
+    <p> {{ data | safe}}</p>
+</div>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+
+{% endblock %}
