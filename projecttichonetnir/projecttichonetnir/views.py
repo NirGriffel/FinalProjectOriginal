@@ -46,6 +46,7 @@ db_Functions = create_LocalDatabaseServiceRoutines()
 @app.route('/')
 @app.route('/home')
 def home():
+    print("Home")
     """Renders the home page."""
     return render_template(
         'index.html',
@@ -143,7 +144,7 @@ def Login():
         repository_name='Pandas',
         )
 
-df = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movieNameandbudget.csv")
+df = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\moviebudget.csv")
 @app.route('/dataSet1')
 def dataSet1():
     """Renders the about page."""
@@ -154,7 +155,7 @@ def dataSet1():
         message='My Data Set 1', data = df.to_html(classes = "table table-hover")
     )
 
-df2 = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movienameandincome.csv")
+df2 = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movieincome.csv")
 @app.route('/dataSet2')
 def dataSet2():
     """Renders the about page."""

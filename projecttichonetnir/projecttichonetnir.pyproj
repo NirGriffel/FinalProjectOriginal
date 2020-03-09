@@ -17,6 +17,7 @@
     <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
     <Name>projecttichonetnir</Name>
     <RootNamespace>projecttichonetnir</RootNamespace>
+    <InterpreterId>CondaEnv|CondaEnv|env1</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -53,8 +54,8 @@
     <Content Include="projecttichonetnir\static\content\bootstrap.css" />
     <Content Include="projecttichonetnir\static\content\bootstrap.min.css" />
     <Content Include="projecttichonetnir\static\content\site.css" />
-    <Content Include="projecttichonetnir\static\data\movieNameandbudget.csv" />
-    <Content Include="projecttichonetnir\static\data\movienameandincome.csv" />
+    <Content Include="projecttichonetnir\static\data\moviebudget.csv" />
+    <Content Include="projecttichonetnir\static\data\movieincome.csv" />
     <Content Include="projecttichonetnir\static\data\users.csv" />
     <Content Include="projecttichonetnir\static\img\MyImg.jpeg" />
     <Content Include="projecttichonetnir\templates\login.html" />
@@ -86,6 +87,9 @@
     <Content Include="projecttichonetnir\templates\contact.html" />
     <Content Include="projecttichonetnir\templates\index.html" />
     <Content Include="projecttichonetnir\templates\layout.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="CondaEnv|CondaEnv|env1" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 
