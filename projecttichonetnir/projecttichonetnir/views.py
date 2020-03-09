@@ -176,7 +176,7 @@ def dataSet1():
 
     
 @app.route('/data/movieincome' , methods = ['GET' , 'POST'])
-def dataSet1():
+def dataSet2():
 
     print("movieincome")
 
