@@ -42,8 +42,8 @@
     <Folder Include="projecttichonetnir\models\__pycache__\" />
     <Folder Include="projecttichonetnir\static\" />
     <Folder Include="projecttichonetnir\static\content\" />
-    <Folder Include="projecttichonetnir\static\fonts\" />
     <Folder Include="projecttichonetnir\static\data\" />
+    <Folder Include="projecttichonetnir\static\fonts\" />
     <Folder Include="projecttichonetnir\static\img\" />
     <Folder Include="projecttichonetnir\static\scripts\" />
     <Folder Include="projecttichonetnir\templates\" />
@@ -54,8 +54,8 @@
     <Content Include="projecttichonetnir\static\content\bootstrap.css" />
     <Content Include="projecttichonetnir\static\content\bootstrap.min.css" />
     <Content Include="projecttichonetnir\static\content\site.css" />
-    <Content Include="projecttichonetnir\static\data\moviebudget.csv" />
-    <Content Include="projecttichonetnir\static\data\movieincome.csv" />
+    <Content Include="projecttichonetnir\static\data\movieNameandbudgetב.csv" />
+    <Content Include="projecttichonetnir\static\data\movienameandincome.csv" />
     <Content Include="projecttichonetnir\static\data\users.csv" />
     <Content Include="projecttichonetnir\static\img\MyImg.jpeg" />
     <Content Include="projecttichonetnir\templates\login.html" />

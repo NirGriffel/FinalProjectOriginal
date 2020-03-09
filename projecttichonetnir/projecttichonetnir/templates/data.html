@@ -2,21 +2,22 @@
 {% block content %}
 <div dir="rtl">
     <div class="jumbotron">
-        <h1> הסבר על מאגר הנתונים</h1>
+        <h1> Explanation of the database </h1>
     </div>
 
     <div>
-        <h3>סרטים הם בין הבילויים הנפוצים ביותר בעולם</h3>
+        <h3>Movies are one of the most popular pastimes in the world</h3>
 
         <p>
-            כיום צפייה בסרטים הפך להיות דבר מאוד פופולרי ויותר ויותר סרטים יוצאים לאור. כיום למפיקי הסרטים אין אתר אינטרנט המאפשר להם לקבל נתונים סטטיסטים ועובדתיים על סרטים שכבר נעשו. מדוע אנשים דרגו לב דווקא את הסרט הזה בדירוג נמוך ולמה את הסרט הזה בדירוג גבוהה והאם סרט שהשקעה הכספית שלו קצת יותר גבוהה יזכה  להכנסה גבוהה בצורה משמעותית.
-            ובנוסף לכך  כיום לא קיים ממשק שמאפשר לצופים שבבית לבחור את הסרט בצורה המתאימה להם כלומר אם הם אוהבים קומדיה האתר יציג להם את חמשת סרטי הקומדיה הטובים ביותר שדורגו על ידי המשתמש וגם יאפשר  להם לקבל תקציר קצר על הסרט, המשתמשים יוכלו גם לבחור את טווח אורך הסרט המתאים להם מכיוון שישנם כאלו שאוהבים סרטים ארוכים יותר וישנם שאוהבים קצרים יותר.
+            Nowadays watching movies has become a very popular thing and more and more films are being published. Today, film producers do not have a website that allows them to obtain statistics and factual data on films that have already been made. Why do people rate this low-ranking movie and why this high-ranking movie and whether a movie whose slightly higher financial investment will earn a significantly higher income.
+            In addition, there is currently no interface that allows viewers at home to choose the movie that is right for them, ie if they like comedy the site will show them the five best comedy rated by the user and also allow them to get a brief synopsis of the movie, users can also choose the movie length range Which suits them because there are those who like longer movies and some who like shorter ones.
 
-            הבאתי שני מאגרי נתונים שבאחד מהם כלול התקציב
-            שקיבל הסרט ובשני כלולה ההכנסה שלו.
-            מאגרי המידע מכילים בשניהם גם את התקציר של הסרט, מספר ההצבעות, הדירוג הסופי מ-1 עד 10, אורך הסרט בדקות, הז'אנר שלו, זמן היציאה שלו, מאיזה גיל
-            מותר לצפות בו, השם שלו והמספר שלו ברשימה (לא רשימה של דירוג)
+            I brought two databases, one of which is included in the budget
+            Received by the film and the other included his income.
+            Both databases also contain the summary of the film, the number of votes, the final rating from 1 to 10, the length of the film in minutes, its genre, its time of departure, from what age
+            It is allowed to view it, its name and number in the list (not a rating list)
         </p>
+
         <marquee scrollamount="5"
                  direction="left"
                  behavior="scroll">
@@ -46,28 +47,26 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <td> שם מאגר הנתונים </td>
-                <td> הסבר</td>
-                <td> לינק</td>
+                <td>Database name </td>
+                <td> Link</td>
             </tr>
 
         </thead>
         <tbody>
             <tr>
                 <td>Movie name and budget</td>
-                <td>מאגר הנתונים על סרטים ותקציבם</td>
-                <td> <a href="{{ url_for('dataSet1') }}">לינק למאגר הנתונים</a></td>
+                <td> <a href="{{ url_for('dataSet1') }}">Link dataSet1</a></td>
             </tr>
         </tbody>
         <tbody>
             <tr>
                 <td>Movie name and income</td>
-                <td>מאגר הנתונים על סרטים והכנסתם</td>
-                <td> <a href="{{ url_for('dataSet2') }}">לינק למאגר הנתונים</a></td>
+                <td> <a href="{{ url_for('dataSet2') }}">Link dataSet2</a></td>
             </tr>
         </tbody>
     </table>
 </div>
+
 
 <style>
     body {

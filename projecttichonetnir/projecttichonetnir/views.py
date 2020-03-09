@@ -144,67 +144,29 @@ def Login():
         repository_name='Pandas',
         )
 
-
-@app.route('/data/moviebudget' , methods = ['GET' , 'POST'])
+df = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movieNameandbudgetב.csv")
+@app.route('/dataSet1')
 def dataSet1():
-
-    print("moviebudget")
-
     """Renders the about page."""
-    form1 = ExpandForm()
-    form2 = CollapseForm()
-    # df = pd.read_csv(path.join(path.dirname(__file__), 'static\\data\\moviebudget.csv'))
-    df = pd.read_csv(path.join(path.dirname(__file__), 'static/data/moviebudget.csv'))
-    raw_data_table = ''
-
-    if request.method == 'POST':
-        if request.form['action'] == 'Expand' and form1.validate_on_submit():
-            raw_data_table = df.to_html(classes = 'table table-hover')
-        if request.form['action'] == 'Collapse' and form2.validate_on_submit():
-            raw_data_table = ''
-
-            
     return render_template(
-        'moviebudget.html',
+        'dataSet1.html',
         title='dataSet1',
         year=datetime.now().year,
-        message='moviebudget dataset page.',
-        raw_data_table = raw_data_table,
-        form1 = form1,
-        form2 = form2
+        message='My Data Set 1', data = df.to_html(classes = "table table-hover")
     )
 
-    
-@app.route('/data/movieincome' , methods = ['GET' , 'POST'])
+df2 = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movienameandincome.csv")
+@app.route('/dataSet2')
 def dataSet2():
-
-    print("movieincome")
-
     """Renders the about page."""
-    form1 = ExpandForm()
-    form2 = CollapseForm()
-    # df = pd.read_csv(path.join(path.dirname(__file__), 'static\\data\\movieincome.csv'))
-    df = pd.read_csv(path.join(path.dirname(__file__), 'static/data/movieincome.csv'))
-    raw_data_table = ''
-
-    if request.method == 'POST':
-        if request.form['action'] == 'Expand' and form1.validate_on_submit():
-            raw_data_table = df.to_html(classes = 'table table-hover')
-        if request.form['action'] == 'Collapse' and form2.validate_on_submit():
-            raw_data_table = ''
-
-            
     return render_template(
-        'moviebudget.html',
+        'dataSet2.html',
         title='dataSet2',
         year=datetime.now().year,
-        message='movieincome dataset page.',
-        raw_data_table = raw_data_table,
-        form1 = form1,
-        form2 = form2
+        message='My Data Set 2', data = df2.to_html(classes = "table table-hover")
     )
 
-    
+
 
 
 
