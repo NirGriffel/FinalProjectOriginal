@@ -58,10 +58,10 @@
     <Content Include="projecttichonetnir\static\data\movienameandincome.csv" />
     <Content Include="projecttichonetnir\static\data\users.csv" />
     <Content Include="projecttichonetnir\static\img\MyImg.jpeg" />
+    <Content Include="projecttichonetnir\templates\data.html" />
     <Content Include="projecttichonetnir\templates\login.html" />
     <Content Include="projecttichonetnir\templates\dataSet1.html" />
     <Content Include="projecttichonetnir\templates\dataSet2.html" />
-    <Content Include="projecttichonetnir\templates\data.html" />
     <Content Include="projecttichonetnir\templates\register.html" />
     <Content Include="requirements.txt" />
     <Content Include="projecttichonetnir\static\fonts\glyphicons-halflings-regular.eot" />

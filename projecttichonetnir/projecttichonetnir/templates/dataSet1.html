@@ -2,12 +2,21 @@
 {% block content %}
 <div dir="rtl">
     <div class="Jumbotron">
-        <p><a class="btn btn-primary btn-lg" href="{{ url_for('data') }}">Return</a></p>
         <h1> DataBase movie budget </h1>
+        <p><a class="btn btn-primary btn-lg" href="{{ url_for('data') }}">Return</a></p>
     </div>
 
     <table class="table table-bordered">
         <thead>
+            <tr>
+                <th>
+                    Excel
+                </th>
+                <th>
+                    Explan
+                </th>
+            </tr>
+        </thead>
             <tr>
                 <th>
                     Movieid
@@ -15,7 +24,6 @@
                 <th> The number in the list </th>
             </tr>
 
-        </thead>
         <tbody>
             <tr>
                 <td>

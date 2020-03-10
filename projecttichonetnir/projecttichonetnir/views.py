@@ -38,7 +38,6 @@ from projecttichonetnir.models.QueryFormStracture import QueryFormStructure
 from projecttichonetnir.models.QueryFormStracture import LoginFormStructure
 from projecttichonetnir.models.QueryFormStracture import UserRegistrationFormStructure 
 
-##from RoyWebProject2_alternative.Models.LocalDatabaseRoutines import IsUserExist, IsLoginGood, AddNewUser
 db_Functions = create_LocalDatabaseServiceRoutines() 
 
 
@@ -81,26 +80,10 @@ def data():
         'data.html',
         title='Data',
         year=datetime.now().year,
-        message='My data page.',
-        img_trump = '/static/imgs/trump.jpg',
-        img_obama = '/static/imgs/obama.jpg',
-        img_bush = '/static/imgs/bush.jpg',
-        img_clinton = '/static/imgs/clinton.jpg'
+        message='Your application description page.'
     )
 
-@app.route('/project_resources')
-def project_resources():
-    """Renders the about page."""
-    return render_template(
-        'project_resources.html'
-    )
 
-@app.route('/hebrew_text')
-def hebrew_text():
-    """Renders the about page."""
-    return render_template(
-        'hebrew_text.html'
-    )
 
 @app.route('/register', methods=['GET', 'POST'])
 def Register():
