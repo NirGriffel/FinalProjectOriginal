@@ -73,6 +73,18 @@ def about():
         message='Your application description page.'
     )
 
+
+@app.route('/project_resources')
+def project_resources():
+
+    print("Project Resources")
+
+    """Renders the about page."""
+    return render_template(
+        'project_resources.html'
+    )
+
+
 @app.route('/data')
 def data():
     """Renders the about page."""
@@ -95,7 +107,6 @@ def Register():
             db_table = ""
 
             flash('Thanks for registering new user - '+ form.FirstName.data + " " + form.LastName.data )
-            # Here you should put what to do (or were to go) if registration was good
         else:
             flash('Error: User with this Username already exist ! - '+ form.username.data)
             form = UserRegistrationFormStructure(request.form)

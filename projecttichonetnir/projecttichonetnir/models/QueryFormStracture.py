@@ -37,8 +37,8 @@ class QueryFormStructure(FlaskForm):
 ##   the 'submit' button - the button the user will press to have the 
 ##                         form be "posted" (sent to the server for process)
 class LoginFormStructure(FlaskForm):
-    username   = StringField('User name:  ' , validators = [DataRequired()])
-    password   = PasswordField('Pass word:  ' , validators = [DataRequired()])
+    username   = StringField('User name:  ' , [validators.Length(min=2)])
+    password   = PasswordField('Pass word:  ',[validators.Length(min=2)])
     submit = SubmitField('Submit')
 
 
@@ -56,12 +56,12 @@ class LoginFormStructure(FlaskForm):
 ##   the 'submit' button - the button the user will press to have the 
 ##                         form be "posted" (sent to the server for process)
 class UserRegistrationFormStructure(FlaskForm):
-    FirstName  = StringField('First name:  ' , validators = [DataRequired()])
-    LastName   = StringField('Last name:  ' , validators = [DataRequired()])
-    PhoneNum   = StringField('Phone number:  ' , validators = [DataRequired()])
-    EmailAddr  = StringField('E-Mail:  ' , validators = [DataRequired()])
+    FirstName  = StringField('First name:  ', [validators.Length(min=2)])
+    LastName   = StringField('Last name:  ' , [validators.Length(min=2)])
+    PhoneNum   = StringField('Phone number:  ' , [validators.Length(min=10,max = 10)])
+    EmailAddr  = StringField('E-Mail:  ' , [validators.Email()])
     username   = StringField('User name:  ' , validators = [DataRequired()])
-    password   = PasswordField('Pass word:  ' , validators = [DataRequired()])
+    password   = PasswordField('Pass word:  ' , [validators.Length(min=2)])
     submit = SubmitField('Submit')
 
 ## This class have the fields that the user can set, to have the query parameters for analysing the data
@@ -76,4 +76,7 @@ class UserRegistrationFormStructure(FlaskForm):
 #    
 #    submit = SubmitField('Submit')
 
-
+class SinglePresidentForm(FlaskForm):
+    genre = SelectField('genre - ' , validators = [DataRequired] , choices=[('romance', 'Romance'), ('comedy', 'Comedy'), ('crime', 'Crime') , ('war', 'War'), ('drama', 'Drama'), ('family', 'Family'), ('action', 'Action'), ('animation', 'Animation'), ('science fiction', 'Science Fiction'),('adventure', 'Adventure'),('horror', 'Horror')])
+    movielenght = DateField('movielenght - ' ,validators = [DataRequired()])
+    submit = SubmitField('give me the 5 best movies!!!')
