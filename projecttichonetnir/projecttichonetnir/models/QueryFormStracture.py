@@ -73,10 +73,16 @@ class UserRegistrationFormStructure(FlaskForm):
 ##   the 'submit' button - the button the user will press to have the 
 ##                         form be "posted" (sent to the server for process)
 #class DataParametersFormStructure(FlaskForm):
-#    
+#     producerOrWiewer
 #    submit = SubmitField('Submit')
 
-class SinglePresidentForm(FlaskForm):
-    genre = SelectField('genre - ' , validators = [DataRequired] , choices=[('romance', 'Romance'), ('comedy', 'Comedy'), ('crime', 'Crime') , ('war', 'War'), ('drama', 'Drama'), ('family', 'Family'), ('action', 'Action'), ('animation', 'Animation'), ('science fiction', 'Science Fiction'),('adventure', 'Adventure'),('horror', 'Horror')])
-    movielenght = DateField('movielenght - ' ,validators = [DataRequired()])
-    submit = SubmitField('give me the 5 best movies!!!')
+class ProducerOrViewer(FlaskForm):
+    producerorviewer = SelectField('producerorviewer: ', validators = [DataRequired] , choices=[('producer' , 'Producer'), ('viewer' , 'Viewer')])
+
+class ProducerForm(FlaskForm):
+    budget = IntField('Budget: ', validators = [DataRequired()])
+    submit = SubmitField('Submit')
+
+class ViewerForm(FlaskForm):
+    genre = SelectField('genre: ' , validators = [DataRequired] , choices=[('romance', 'Romance'), ('comedy', 'Comedy'), ('crime', 'Crime') , ('war', 'War'), ('drama', 'Drama'), ('family', 'Family'), ('action', 'Action'), ('animation', 'Animation'), ('science fiction', 'Science Fiction'),('adventure', 'Adventure'),('horror', 'Horror')])
+    submit = SubmitField('Submit')
