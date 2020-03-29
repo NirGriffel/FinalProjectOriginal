@@ -161,12 +161,36 @@ def dataSet2():
     )
 
 
+@app.route('/query', methods=['GET', 'POST'])
+def query():
+    form = Producer(request.form)
 
+    dfbudget = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movieNameandbudgetב.csv")
+    dfincome = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movienameandincome.csv")
+    
+    dfbudget = dfbudget.set_index('genre')
+    dfbudget = dfbudget.loc[[gener]]
+    dfincome = pd.read_csv("C:\\Users\\Nir\\Desktop\\data\\movieincome.csv")
+    dfbudget = dfbudget.set_index('genre')
+    dfbudget = dfbudget.drop(['mpaa_rating','release_date','rating_count','runtime','movieid','rating'], 1)
+    dfbudget = dfbudget.loc[dfbudget['budget'] >= int(minbudget)]
+    dfbudget = dfbudget.loc[dfbudget['budget'] <= int(maxbudget)]
+    dfbudget = dfbudget.reset_index()
+    dfincome = dfincome.set_index('genre')
+    dfincome = dfincome.loc[['Comedy']]
+    dfincome = dfincome.drop(['mpaa_rating','release_date','rating_count','runtime','movieid','rating'], 1)
+    dfincome = dfincome.rename(columns={'gross': 'income'})
+    dfincome = dfincome.reset_index()
+    df3 = pd.merge(dfincome,dfbudget)
+    df3= df3.sample(30)
+    df3 = df3.nlargest(20,'budget')
 
-
-
-
-
-
+    return render_template(
+        'register.html', 
+        form=form, 
+        title='Query',
+        year=datetime.now().year,
+        repository_name='Pandas',
+        )
 
 

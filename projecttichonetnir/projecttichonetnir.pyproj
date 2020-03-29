@@ -62,6 +62,7 @@
     <Content Include="projecttichonetnir\templates\login.html" />
     <Content Include="projecttichonetnir\templates\dataSet1.html" />
     <Content Include="projecttichonetnir\templates\dataSet2.html" />
+    <Content Include="projecttichonetnir\templates\query.html" />
     <Content Include="projecttichonetnir\templates\register.html" />
     <Content Include="requirements.txt" />
     <Content Include="projecttichonetnir\static\fonts\glyphicons-halflings-regular.eot" />

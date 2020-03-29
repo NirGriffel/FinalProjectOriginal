@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+    {% for message in messages %}
+<h3>{{ message[1] }}</h3>
+<br />
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+<br />
+<br />
+<br />
+
+<form method=post>
+    {{ form.csrf }}
+    {{ form.csrf_token }}
+    <table>
+        <tr>
+            <td>
+                {{ form.maxbudget.label }}
+            </td>
+            <td>
+                {{ form.maxbudget }}
+            </td>
+            <td>
+                {% if form.maxbudget.errors %}
+                <ul class="text-danger">{% for error in form.maxbudget.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.minbudget.label }}
+            </td>
+            <td>
+                {{ form.minbudget }}
+            </td>
+            <td>
+                {% if form.minbudget.errors %}
+                <ul class="text-danger">{% for error in form.minbudget.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.genre.label }}
+            </td>
+            <td>
+                {{ form.genre }}
+            </td>
+            <td>
+                {% if form.genre.errors %}
+                <ul class="text-danger">{% for error in form.genre.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <div class="input submit">
+                    <input type="submit" value="query">
+                </div>
+            <td>
+            <td></td>
+        </tr>
+    </table>
+</form>
+
+<style>
+    td, tr, table {
+        font-size: 22px
+    }
+
+    h2 {
+        position: relative;
+        left: 450px;
+    }
+
+    body {
+        background-color: #858a88a6;
+        color: black;
+    }
+</style>
+    {% endblock %}

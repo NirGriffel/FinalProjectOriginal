@@ -5,7 +5,7 @@
 from datetime import datetime
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
+from wtforms import StringField, SubmitField,IntegerField 
 from wtforms import Form, BooleanField, PasswordField
 from wtforms import TextField, TextAreaField, SelectField, DateField
 from wtforms import validators, ValidationError
@@ -76,13 +76,10 @@ class UserRegistrationFormStructure(FlaskForm):
 #     producerOrWiewer
 #    submit = SubmitField('Submit')
 
-class ProducerOrViewer(FlaskForm):
-    producerorviewer = SelectField('producerorviewer: ', validators = [DataRequired] , choices=[('producer' , 'Producer'), ('viewer' , 'Viewer')])
-
-class ProducerForm(FlaskForm):
-    budget = IntField('Budget: ', validators = [DataRequired()])
+class Producer(FlaskForm):
+    maxbudget = IntegerField('The Max budget you can invest: ', validators = [DataRequired()])
+    minbudget = IntegerField('The Min budget you can invest: ', validators = [DataRequired()])
+    genre = SelectField('Your movie genre: ' , validators = [DataRequired] , choices=[('romance', 'Romance'), ('comedy', 'Comedy'), ('crime', 'Crime') , ('war', 'War'), ('drama', 'Drama'), ('family', 'Family'), ('action', 'Action'), ('animation', 'Animation'), ('science fiction', 'Science Fiction'),('adventure', 'Adventure'),('horror', 'Horror')])
     submit = SubmitField('Submit')
 
-class ViewerForm(FlaskForm):
-    genre = SelectField('genre: ' , validators = [DataRequired] , choices=[('romance', 'Romance'), ('comedy', 'Comedy'), ('crime', 'Crime') , ('war', 'War'), ('drama', 'Drama'), ('family', 'Family'), ('action', 'Action'), ('animation', 'Animation'), ('science fiction', 'Science Fiction'),('adventure', 'Adventure'),('horror', 'Horror')])
-    submit = SubmitField('Submit')
+
