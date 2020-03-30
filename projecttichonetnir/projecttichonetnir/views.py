@@ -197,9 +197,10 @@ def query():
         df3 = pd.merge(dfincome,dfbudget)
         #df3= df3.sample(30)
         df3 = df3.nlargest(20,'budget')
+        df3 = df3.set_index('title')
         fig = plt.figure()
         ax = fig.add_subplot(111)
-        df3.plot(x='title')
+        df3.plot(ax = ax , kind = 'bar', figsize = (24, 24) , fontsize = 18 , grid = True)
         chart = plot_to_img(fig)
 
 
