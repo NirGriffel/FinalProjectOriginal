@@ -79,7 +79,7 @@ class UserRegistrationFormStructure(FlaskForm):
 class Producer(FlaskForm):
     maxbudget = IntegerField('The Max budget you can invest: ', validators = [DataRequired()])
     minbudget = IntegerField('The Min budget you can invest: ', validators = [DataRequired()])
-    genre = SelectField('Your movie genre: ' , validators = [DataRequired] , choices=[('romance', 'Romance'), ('comedy', 'Comedy'), ('crime', 'Crime') , ('war', 'War'), ('drama', 'Drama'), ('family', 'Family'), ('action', 'Action'), ('animation', 'Animation'), ('science fiction', 'Science Fiction'),('adventure', 'Adventure'),('horror', 'Horror')])
+    genre = SelectField('Your movie genre: ' , validators = [DataRequired] , choices=[('Romance', 'Romance'), ('Comedy', 'Comedy'), ('Crime', 'Crime') , ('War', 'War'), ('Drama', 'Drama'), ('Family', 'Family'), ('Action', 'Action'), ('Animation', 'Animation'), ('Science Fiction', 'Science Fiction'),('Adventure', 'Adventure'),('Horror', 'Horror')])
     submit = SubmitField('Submit')
 
 

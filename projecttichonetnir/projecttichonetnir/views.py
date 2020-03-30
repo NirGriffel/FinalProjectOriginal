@@ -29,6 +29,10 @@ import base64
 
 from os import path
 
+import base64
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
+
 from flask   import Flask, render_template, flash, request
 from wtforms import Form, BooleanField, StringField, PasswordField, validators
 from wtforms import TextField, TextAreaField, SubmitField, SelectField, DateField
@@ -38,6 +42,9 @@ from projecttichonetnir.models.QueryFormStracture import QueryFormStructure
 from projecttichonetnir.models.QueryFormStracture import LoginFormStructure
 from projecttichonetnir.models.QueryFormStracture import UserRegistrationFormStructure
 from projecttichonetnir.models.QueryFormStracture import Producer
+
+from flask_bootstrap import Bootstrap
+bootstrap = Bootstrap(app)
 
 db_Functions = create_LocalDatabaseServiceRoutines() 
 
@@ -171,28 +178,28 @@ def query():
     dfincome = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movienameandincome.csv")
     chart = ''
     if request.method == 'POST':  
-        gener = form.gener.data
+        gener = form.genre.data
+        print(gener)
         minbudget = form.minbudget.data
         maxbudget = form.maxbudget.data
         
         dfbudget = dfbudget.set_index('genre')
         dfbudget = dfbudget.loc[[gener]]
-        dfbudget = dfbudget.set_index('genre')
         dfbudget = dfbudget.drop(['mpaa_rating','release_date','rating_count','runtime','movieid','rating'], 1)
         dfbudget = dfbudget.loc[dfbudget['budget'] >= minbudget]
         dfbudget = dfbudget.loc[dfbudget['budget'] <= maxbudget]
         dfbudget = dfbudget.reset_index()
         dfincome = dfincome.set_index('genre')
-        dfincome = dfincome.loc[['Comedy']]
+        dfincome = dfincome.loc[[gener]]
         dfincome = dfincome.drop(['mpaa_rating','release_date','rating_count','runtime','movieid','rating'], 1)
         dfincome = dfincome.rename(columns={'gross': 'income'})
         dfincome = dfincome.reset_index()
         df3 = pd.merge(dfincome,dfbudget)
-        df3= df3.sample(30)
+        #df3= df3.sample(30)
         df3 = df3.nlargest(20,'budget')
         fig = plt.figure()
         ax = fig.add_subplot(111)
-        df3.plot(ax = ax , kind = 'bar', figsize = (24, 8) , fontsize = 22 , grid = True)
+        df3.plot(x='title')
         chart = plot_to_img(fig)
 
 

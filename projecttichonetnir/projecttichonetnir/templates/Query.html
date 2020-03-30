@@ -22,8 +22,8 @@
 
     <div class="col-md-4">
         <form method="post">
-            {{ form1.csrf_token }}
-            {{ wtf.form_field(form.gener)}}
+            {{ form.csrf_token }}
+            {{ wtf.form_field(form.genre)}}
             {{ wtf.form_field(form.minbudget)}}
             {{ wtf.form_field(form.maxbudget)}}
             <input class="btn btn-primary" type="submit" value="submit">
