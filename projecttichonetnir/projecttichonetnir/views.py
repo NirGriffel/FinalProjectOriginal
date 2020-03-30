@@ -36,7 +36,8 @@ from wtforms import ValidationError
 
 from projecttichonetnir.models.QueryFormStracture import QueryFormStructure 
 from projecttichonetnir.models.QueryFormStracture import LoginFormStructure
-from projecttichonetnir.models.QueryFormStracture import UserRegistrationFormStructure 
+from projecttichonetnir.models.QueryFormStracture import UserRegistrationFormStructure
+from projecttichonetnir.models.QueryFormStracture import Producer
 
 db_Functions = create_LocalDatabaseServiceRoutines() 
 
@@ -163,34 +164,52 @@ def dataSet2():
 
 @app.route('/query', methods=['GET', 'POST'])
 def query():
-    form = Producer(request.form)
+
+    form = Producer()
 
     dfbudget = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movieNameandbudgetב.csv")
     dfincome = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movienameandincome.csv")
-    
-    dfbudget = dfbudget.set_index('genre')
-    dfbudget = dfbudget.loc[[gener]]
-    dfincome = pd.read_csv("C:\\Users\\Nir\\Desktop\\data\\movieincome.csv")
-    dfbudget = dfbudget.set_index('genre')
-    dfbudget = dfbudget.drop(['mpaa_rating','release_date','rating_count','runtime','movieid','rating'], 1)
-    dfbudget = dfbudget.loc[dfbudget['budget'] >= int(minbudget)]
-    dfbudget = dfbudget.loc[dfbudget['budget'] <= int(maxbudget)]
-    dfbudget = dfbudget.reset_index()
-    dfincome = dfincome.set_index('genre')
-    dfincome = dfincome.loc[['Comedy']]
-    dfincome = dfincome.drop(['mpaa_rating','release_date','rating_count','runtime','movieid','rating'], 1)
-    dfincome = dfincome.rename(columns={'gross': 'income'})
-    dfincome = dfincome.reset_index()
-    df3 = pd.merge(dfincome,dfbudget)
-    df3= df3.sample(30)
-    df3 = df3.nlargest(20,'budget')
+    chart = ''
+    if request.method == 'POST':  
+        gener = form.gener.data
+        minbudget = form.minbudget.data
+        maxbudget = form.maxbudget.data
+        
+        dfbudget = dfbudget.set_index('genre')
+        dfbudget = dfbudget.loc[[gener]]
+        dfbudget = dfbudget.set_index('genre')
+        dfbudget = dfbudget.drop(['mpaa_rating','release_date','rating_count','runtime','movieid','rating'], 1)
+        dfbudget = dfbudget.loc[dfbudget['budget'] >= minbudget]
+        dfbudget = dfbudget.loc[dfbudget['budget'] <= maxbudget]
+        dfbudget = dfbudget.reset_index()
+        dfincome = dfincome.set_index('genre')
+        dfincome = dfincome.loc[['Comedy']]
+        dfincome = dfincome.drop(['mpaa_rating','release_date','rating_count','runtime','movieid','rating'], 1)
+        dfincome = dfincome.rename(columns={'gross': 'income'})
+        dfincome = dfincome.reset_index()
+        df3 = pd.merge(dfincome,dfbudget)
+        df3= df3.sample(30)
+        df3 = df3.nlargest(20,'budget')
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        df3.plot(ax = ax , kind = 'bar', figsize = (24, 8) , fontsize = 22 , grid = True)
+        chart = plot_to_img(fig)
+
+
 
     return render_template(
-        'register.html', 
+        'query.html', 
         form=form, 
         title='Query',
         year=datetime.now().year,
         repository_name='Pandas',
+        chart = chart
         )
 
 
+def plot_to_img(fig):
+    pngImage = io.BytesIO()
+    FigureCanvas(fig).print_png(pngImage)
+    pngImageB64String = "data:image/png;base64,"
+    pngImageB64String += base64.b64encode(pngImage.getvalue()).decode('utf8')
+    return pngImageB64String
