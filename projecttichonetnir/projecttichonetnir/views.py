@@ -50,7 +50,7 @@ db_Functions = create_LocalDatabaseServiceRoutines()
 
 
 
-@app.route('/')
+
 @app.route('/home')
 def home():
     print("Home")
@@ -113,7 +113,6 @@ def Register():
         if (not db_Functions.IsUserExist(form.username.data)):
             db_Functions.AddNewUser(form)
             db_table = ""
-
             flash('Thanks for registering new user - '+ form.FirstName.data + " " + form.LastName.data )
         else:
             flash('Error: User with this Username already exist ! - '+ form.username.data)
@@ -122,26 +121,27 @@ def Register():
     return render_template(
         'register.html', 
         form=form, 
-        title='Register New User',
+        title='',
         year=datetime.now().year,
         repository_name='Pandas',
         )
 
+@app.route('/')
 @app.route('/login', methods=['GET', 'POST'])
 def Login():
     form = LoginFormStructure(request.form)
 
     if (request.method == 'POST' and form.validate()):
         if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
-            flash('Login approved!')
+            return render_template("index.html")
             #return redirect('<were to go if login is good!')
         else:
-            flash('Error in - Username and/or password')
+            flash('Wrong password and\or username')
    
     return render_template(
         'login.html', 
         form=form, 
-        title='Login to data analysis',
+        title='',
         year=datetime.now().year,
         repository_name='Pandas',
         )
