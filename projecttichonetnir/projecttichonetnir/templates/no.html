@@ -1,0 +1,21 @@
+{% extends "layoutlogin.html" %}
+{% block content %}
+
+<div class="Jumbotron">
+     <h2> Please choose Login or Register </h2>
+</div>
+
+<a class="btn btn-primary btn-lg" href="{{ url_for('Login') }}"> Login  </a>
+
+<a class="btn btn-primary btn-lg" href="{{ url_for('Register') }}">Register</a>
+
+<style>
+    .btn-lg{
+        padding: 20px 206px
+        
+    }
+    a{
+        line-height: 20
+    }
+</style>
+{% endblock %}

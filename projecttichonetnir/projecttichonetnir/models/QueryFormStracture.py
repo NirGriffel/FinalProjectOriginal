@@ -37,8 +37,8 @@ class QueryFormStructure(FlaskForm):
 ##   the 'submit' button - the button the user will press to have the 
 ##                         form be "posted" (sent to the server for process)
 class LoginFormStructure(FlaskForm):
-    username   = StringField('User name:  ' , [validators.Length(min=2)])
-    password   = PasswordField('Pass word:  ',[validators.Length(min=2)])
+    username   = StringField('Username:  ' , [validators.Length(min=2)])
+    password   = PasswordField('Password:  ',[validators.Length(min=2)])
     submit = SubmitField('Submit')
 
 

@@ -54,14 +54,16 @@
     <Content Include="projecttichonetnir\static\content\bootstrap.css" />
     <Content Include="projecttichonetnir\static\content\bootstrap.min.css" />
     <Content Include="projecttichonetnir\static\content\site.css" />
-    <Content Include="projecttichonetnir\static\data\movieNameandbudgetב.csv" />
+    <Content Include="projecttichonetnir\static\data\movieNameandbudget.csv" />
     <Content Include="projecttichonetnir\static\data\movienameandincome.csv" />
     <Content Include="projecttichonetnir\static\data\users.csv" />
     <Content Include="projecttichonetnir\static\img\cutmovies.jpg" />
     <Content Include="projecttichonetnir\static\img\loginimage.jpeg" />
     <Content Include="projecttichonetnir\static\img\MyImg.jpeg" />
     <Content Include="projecttichonetnir\static\img\registerimage.jpeg" />
+    <Content Include="projecttichonetnir\templates\no.html" />
     <Content Include="projecttichonetnir\templates\data.html" />
+    <Content Include="projecttichonetnir\templates\layoutlogin.html" />
     <Content Include="projecttichonetnir\templates\login.html" />
     <Content Include="projecttichonetnir\templates\dataSet1.html" />
     <Content Include="projecttichonetnir\templates\dataSet2.html" />

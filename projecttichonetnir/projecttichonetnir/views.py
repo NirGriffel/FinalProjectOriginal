@@ -49,7 +49,15 @@ bootstrap = Bootstrap(app)
 db_Functions = create_LocalDatabaseServiceRoutines() 
 
 
-
+@app.route('/')
+@app.route('/no')
+def no():
+    print("no")
+    return render_template(
+        'no.html',
+        title='Home Page',
+        year=datetime.now().year,
+    )
 
 @app.route('/home')
 def home():
@@ -60,6 +68,7 @@ def home():
         title='Home Page',
         year=datetime.now().year,
     )
+
 
 @app.route('/contact')
 def contact():
@@ -113,7 +122,8 @@ def Register():
         if (not db_Functions.IsUserExist(form.username.data)):
             db_Functions.AddNewUser(form)
             db_table = ""
-            flash('Thanks for registering new user - '+ form.FirstName.data + " " + form.LastName.data )
+            flash('Thanks for registering new user - '+ form.FirstName.data + " " + form.LastName.data )\
+
         else:
             flash('Error: User with this Username already exist ! - '+ form.username.data)
             form = UserRegistrationFormStructure(request.form)
@@ -121,23 +131,22 @@ def Register():
     return render_template(
         'register.html', 
         form=form, 
-        title='register',
+        title='',
         year=datetime.now().year,
         repository_name='Pandas',
         )
 
-@app.route('/')
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def Login():
-
-  
 
     form = LoginFormStructure(request.form)
 
     if (request.method == 'POST' and form.validate()):
         if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
             return render_template("index.html")
-            #return redirect('<were to go if login is good!')
+
         else:
             flash('Wrong password and\or username')
    
@@ -149,10 +158,9 @@ def Login():
         repository_name='Pandas',
         )
 
-df = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movieNameandbudgetב.csv")
 @app.route('/dataSet1')
 def dataSet1():
-    """Renders the about page."""
+    df = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movieNameandbudget.csv")
     return render_template(
         'dataSet1.html',
         title='dataSet1',
@@ -160,10 +168,9 @@ def dataSet1():
         message='My Data Set 1', data = df.to_html(classes = "table table-hover")
     )
 
-df2 = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movienameandincome.csv")
 @app.route('/dataSet2')
 def dataSet2():
-    """Renders the about page."""
+    df2 = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movienameandincome.csv")
     return render_template(
         'dataSet2.html',
         title='dataSet2',
@@ -177,7 +184,7 @@ def query():
 
     form = Producer()
 
-    dfbudget = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movieNameandbudgetב.csv")
+    dfbudget = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movieNameandbudget.csv")
     dfincome = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movienameandincome.csv")
     chart = ''
     if request.method == 'POST':  
