@@ -200,7 +200,7 @@ def query():
         df3 = df3.set_index('title')
         fig = plt.figure()
         ax = fig.add_subplot(111)
-        df3.plot(ax = ax , kind = 'bar', figsize = (24, 24) , fontsize = 18 , grid = True)
+        df3.plot(ax = ax , kind = 'bar', figsize = (24, 15) , fontsize = 18 , grid = True)
         chart = plot_to_img(fig)
 
 
