@@ -121,7 +121,7 @@ def Register():
     return render_template(
         'register.html', 
         form=form, 
-        title='',
+        title='register',
         year=datetime.now().year,
         repository_name='Pandas',
         )
@@ -129,6 +129,9 @@ def Register():
 @app.route('/')
 @app.route('/login', methods=['GET', 'POST'])
 def Login():
+
+  
+
     form = LoginFormStructure(request.form)
 
     if (request.method == 'POST' and form.validate()):
