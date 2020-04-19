@@ -58,7 +58,7 @@
     <Content Include="projecttichonetnir\static\data\movienameandincome.csv" />
     <Content Include="projecttichonetnir\static\data\users.csv" />
     <Content Include="projecttichonetnir\static\img\background.jpeg" />
-    <Content Include="projecttichonetnir\static\img\cutmovies.jpg" />
+    <Content Include="projecttichonetnir\static\img\cutmovies.jpeg" />
     <Content Include="projecttichonetnir\static\img\loginimage.jpeg" />
     <Content Include="projecttichonetnir\static\img\MyImg.jpeg" />
     <Content Include="projecttichonetnir\static\img\popcorn.jpeg" />
