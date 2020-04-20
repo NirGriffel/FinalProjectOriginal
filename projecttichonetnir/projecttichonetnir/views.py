@@ -218,7 +218,7 @@ def query():
     return render_template(
         'query.html', 
         form=form, 
-        title='Query',
+        title='',
         year=datetime.now().year,
         repository_name='Pandas',
         chart = chart
