@@ -187,12 +187,12 @@ def query():
     dfbudget = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movieNameandbudget.csv")
     dfincome = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movienameandincome.csv")
     chart = ''
+
     if request.method == 'POST':  
         gener = form.genre.data
         print(gener)
         minbudget = form.minbudget.data
         maxbudget = form.maxbudget.data
-        
         dfbudget = dfbudget.set_index('genre')
         dfbudget = dfbudget.loc[[gener]]
         dfbudget = dfbudget.drop(['mpaa_rating','release_date','rating_count','runtime','movieid','rating'], 1)

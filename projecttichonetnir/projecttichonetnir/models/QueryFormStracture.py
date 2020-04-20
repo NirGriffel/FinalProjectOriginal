@@ -7,7 +7,7 @@ from datetime import datetime
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField,IntegerField 
 from wtforms import Form, BooleanField, PasswordField
-from wtforms import TextField, TextAreaField, SelectField, DateField
+from wtforms import TextField, TextAreaField, SelectField, DateField,BooleanField
 from wtforms import validators, ValidationError
 
 from wtforms.validators import DataRequired
@@ -79,7 +79,7 @@ class UserRegistrationFormStructure(FlaskForm):
 class Producer(FlaskForm):
     maxbudget = IntegerField('The Max budget you can invest: ', validators = [DataRequired()])
     minbudget = IntegerField('The Min budget you can invest: ', validators = [DataRequired()])
-    genre = SelectField('Your movie genre: ' , validators = [DataRequired] , choices=[('Romance', 'Romance'), ('Comedy', 'Comedy'), ('Crime', 'Crime') , ('War', 'War'), ('Drama', 'Drama'), ('Family', 'Family'), ('Action', 'Action'), ('Animation', 'Animation'), ('Science Fiction', 'Science Fiction'),('Adventure', 'Adventure'),('Horror', 'Horror')])
+    genre = SelectField('Your movie genre: ' , validators = [DataRequired] , choices=[('Romance', 'Romance'), ('Comedy', 'Comedy'), ('Crime', 'Crime') , ('War', 'War'), ('Drama', 'Drama'), ('Family', 'Family'), ('Action', 'Action'), ('Animation', 'Animation'), ('Science Fiction', 'Science Fiction'),('Adventure', 'Adventure'),('Horror', 'Horror')])  
     submit = SubmitField('Submit')
 
 
