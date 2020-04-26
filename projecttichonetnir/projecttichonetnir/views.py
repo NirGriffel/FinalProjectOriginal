@@ -48,7 +48,11 @@ bootstrap = Bootstrap(app)
 
 db_Functions = create_LocalDatabaseServiceRoutines() 
 
-
+#--------------------------------------------------------------------------------
+# no page - 
+#This page connects between the Login page to the Register page to one page that give the user option to choose if he want to login or regist.
+# He has no reference in layout
+#--------------------------------------------------------------------------------
 @app.route('/')
 @app.route('/no')
 def no():
@@ -59,6 +63,10 @@ def no():
         year=datetime.now().year,
     )
 
+#--------------------------------------------------------------------------------
+# home page - 
+#This page give informtion about the project - what is my field of research
+#--------------------------------------------------------------------------------
 @app.route('/home')
 def home():
     print("Home")
@@ -70,6 +78,10 @@ def home():
     )
 
 
+#--------------------------------------------------------------------------------
+#contact page -
+#This page give informtion about Shows the contact details with me (Gmail, phone)
+#--------------------------------------------------------------------------------
 @app.route('/contact')
 def contact():
     """Renders the contact page."""
@@ -80,6 +92,10 @@ def contact():
         message='Your contact page.'
     )
 
+#--------------------------------------------------------------------------------
+#about page -
+#This page give informtion about the project What the project is about.
+#--------------------------------------------------------------------------------
 @app.route('/about')
 def about():
     """Renders the about page."""
@@ -90,18 +106,10 @@ def about():
         message='Your application description page.'
     )
 
-
-@app.route('/project_resources')
-def project_resources():
-
-    print("Project Resources")
-
-    """Renders the about page."""
-    return render_template(
-        'project_resources.html'
-    )
-
-
+#--------------------------------------------------------------------------------
+#data page -
+#This page show 2 links to my DataBase.
+#--------------------------------------------------------------------------------
 @app.route('/data')
 def data():
     """Renders the about page."""
@@ -113,11 +121,15 @@ def data():
     )
 
 
-
+#--------------------------------------------------------------------------------
+#register page -
+#the user must have account to start browes in my account, this oage give im the option to registr.
+#--------------------------------------------------------------------------------
 @app.route('/register', methods=['GET', 'POST'])
 def Register():
     form = UserRegistrationFormStructure(request.form)
 
+    #הפעולה הזאת בודקת את פרטי המשתמש ברגע שלחץ על כפתור השליחה. 
     if (request.method == 'POST' and form.validate()):
         if (not db_Functions.IsUserExist(form.username.data)):
             db_Functions.AddNewUser(form)
@@ -137,12 +149,16 @@ def Register():
         )
 
 
-
+#--------------------------------------------------------------------------------
+#login page -
+#if the user have allredy account he can login to the site and start browes, this page check if he rellay have account.
+#--------------------------------------------------------------------------------
 @app.route('/login', methods=['GET', 'POST'])
 def Login():
 
     form = LoginFormStructure(request.form)
-
+    #הפעולה הזאת מאמת את פירטי המשתמש מקובץ האקסל שאליו שמורת כל הפרטים.
+    # אם קיים משתמש כזה בקובץ היא מאפשר לו להתחבר ואם לא היא מקפיצה לו הודעת שגיאה
     if (request.method == 'POST' and form.validate()):
         if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
             return render_template("index.html")
@@ -158,8 +174,13 @@ def Login():
         repository_name='Pandas',
         )
 
+#--------------------------------------------------------------------------------
+#dataSet1 page -
+#This page give information about the first database and give the user information to see the dataBase.
+#--------------------------------------------------------------------------------
 @app.route('/dataSet1')
 def dataSet1():
+    #הפעולה הזאת קוראת את קובץ הדאטה ובעזרת אנחנו יכולים להציג למשתמש את הקובץ לאחר מכן
     df = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movieNameandbudget.csv")
     return render_template(
         'dataSet1.html',
@@ -168,8 +189,13 @@ def dataSet1():
         message='My Data Set 1', data = df.to_html(classes = "table table-hover")
     )
 
+#--------------------------------------------------------------------------------
+#dataSet2 page -
+#This page give information about the secound database and give the user information to see the dataBase.
+#--------------------------------------------------------------------------------
 @app.route('/dataSet2')
 def dataSet2():
+    #הפעולה הזאת קוראת את קובץ הדאטה ובעזרת אנחנו יכולים להציג למשתמש את הקובץ לאחר מכן
     df2 = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movienameandincome.csv")
     return render_template(
         'dataSet2.html',
@@ -178,24 +204,32 @@ def dataSet2():
         message='My Data Set 2', data = df2.to_html(classes = "table table-hover")
     )
 
-
+#--------------------------------------------------------------------------------
+#query page -
+#This page give information about the first database and give the user information to see the dataBase.
+#--------------------------------------------------------------------------------
 @app.route('/query', methods=['GET', 'POST'])
 def query():
 
     form = Producer()
 
+    #הפעולה קוראת את שתי ממאגרי הנתונים 
     dfbudget = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movieNameandbudget.csv")
     dfincome = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movienameandincome.csv")
+    #מכיוון שהוויזואל סטודיו לא יודע להציג את הגרף כגרף אנחנו צריכים להעביר אותו לתמונה.
+    # אנחנו מגדירים את זה בהתחלה 'ריק' כדי שבשל מאוחר יותר נוכל להכניס את הגרף לתוכו ולהציג אותו למשתמש. 
     chart = ''
 
-    if request.method == 'POST':  
+    #ברגע שהמשתמש לוחץ אישור לאחר שהזין את הפרטים  מתחיל עריכה של קובץ האקסל לפי הנתונים שהמשתמש ביקש ולאחר מכן הנתונים מוצג בגרף   
+    if request.method == 'POST':
+        #השלוש שורות הראשונות לוקחות את הנתונים שהמשתמש ומאפשרות לנו לערוך את קובץ הדטא באתם לבקשתו
         gener = form.genre.data
-        print(gener)
         minbudget = form.minbudget.data
         maxbudget = form.maxbudget.data
         dfbudget = dfbudget.set_index('genre')
         dfbudget = dfbudget.loc[[gener]]
         dfbudget = dfbudget.drop(['mpaa_rating','release_date','rating_count','runtime','movieid','rating'], 1)
+        #הפעולה ממינת את קובץ הדטא על פי הטווחים שהמשתמש הזין ותציג לו תוכן בהתאם
         dfbudget = dfbudget.loc[dfbudget['budget'] >= minbudget]
         dfbudget = dfbudget.loc[dfbudget['budget'] <= maxbudget]
         dfbudget = dfbudget.reset_index()
@@ -205,12 +239,14 @@ def query():
         dfincome = dfincome.rename(columns={'gross': 'income'})
         dfincome = dfincome.reset_index()
         df3 = pd.merge(dfincome,dfbudget)
-        #df3= df3.sample(30)
         df3 = df3.nlargest(20,'budget')
         df3 = df3.set_index('title')
         fig = plt.figure()
         ax = fig.add_subplot(111)
+        #יוצר את הגרף על פי הנתונים שהמשתמש הזין. הגרף יהיה בצורה של גרף עמודות
         df3.plot(ax = ax , kind = 'bar', figsize = (24, 15) , fontsize = 18 , grid = True , color=['black','brown'])
+        #בשורה הזאת הגרף הופך לתמונה על יידי פונקציה שמוגדרת למטה בשם 
+        #plot_to_image
         chart = plot_to_img(fig)
 
 
@@ -224,7 +260,8 @@ def query():
         chart = chart
         )
 
-
+#הפעולה הופכת את הגרף לתמונה בדף ה
+#Query
 def plot_to_img(fig):
     pngImage = io.BytesIO()
     FigureCanvas(fig).print_png(pngImage)
