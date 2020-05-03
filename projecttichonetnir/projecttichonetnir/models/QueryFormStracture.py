@@ -61,7 +61,7 @@ class UserRegistrationFormStructure(FlaskForm):
     PhoneNum   = StringField('Phone number:  ' , [validators.Length(min=10,max = 10)])
     EmailAddr  = StringField('E-Mail:  ' , [validators.Email()])
     username   = StringField('User name:  ' , validators = [DataRequired()])
-    password   = PasswordField('Pass word:  ' , [validators.Length(min=2)])
+    password   = PasswordField('Password:  ' , [validators.Length(min=2)])
     submit = SubmitField('Submit')
 
 ## This class have the fields that the user can set, to have the query parameters for analysing the data
@@ -75,6 +75,8 @@ class UserRegistrationFormStructure(FlaskForm):
 #class DataParametersFormStructure(FlaskForm):
 #     producerOrWiewer
 #    submit = SubmitField('Submit')
+
+
 
 class Producer(FlaskForm):
     maxbudget = IntegerField('The Max budget you can invest: ', validators = [DataRequired()])

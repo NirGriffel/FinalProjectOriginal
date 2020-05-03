@@ -129,13 +129,13 @@ def data():
 def Register():
     form = UserRegistrationFormStructure(request.form)
 
-    #הפעולה הזאת בודקת את פרטי המשתמש ברגע שלחץ על כפתור השליחה. 
+    #התנאי הבוליאני בודק את פרטי המשתמש ברגע שלחץ על כפתור השליחה. 
     if (request.method == 'POST' and form.validate()):
         if (not db_Functions.IsUserExist(form.username.data)):
             db_Functions.AddNewUser(form)
             db_table = ""
-            flash('Thanks for registering new user')
-
+            return render_template("Login.html")
+    #אם משהו מפרטיו היו שגואים המשתמש יקבל הודעת שגיאה חזרה למסך 
         else:
             flash('Error: User with this Username already exist !')
             form = UserRegistrationFormStructure(request.form)
@@ -157,7 +157,7 @@ def Register():
 def Login():
 
     form = LoginFormStructure(request.form)
-    #הפעולה הזאת מאמת את פירטי המשתמש מקובץ האקסל שאליו שמורת כל הפרטים.
+  #התנאי הבואלי הזה מאמת את פירטי המשתמש מקובץ האקסל שאליו שמורת כל הפרטים.
     # אם קיים משתמש כזה בקובץ היא מאפשר לו להתחבר ואם לא היא מקפיצה לו הודעת שגיאה
     if (request.method == 'POST' and form.validate()):
         if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
