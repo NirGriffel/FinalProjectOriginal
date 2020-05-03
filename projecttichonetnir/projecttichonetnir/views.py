@@ -134,10 +134,10 @@ def Register():
         if (not db_Functions.IsUserExist(form.username.data)):
             db_Functions.AddNewUser(form)
             db_table = ""
-            flash('Thanks for registering new user - '+ form.FirstName.data + " " + form.LastName.data )\
+            flash('Thanks for registering new user')
 
         else:
-            flash('Error: User with this Username already exist ! - '+ form.username.data)
+            flash('Error: User with this Username already exist !')
             form = UserRegistrationFormStructure(request.form)
 
     return render_template(
@@ -181,7 +181,7 @@ def Login():
 @app.route('/dataSet1')
 def dataSet1():
     #הפעולה הזאת קוראת את קובץ הדאטה ובעזרת אנחנו יכולים להציג למשתמש את הקובץ לאחר מכן
-    df = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movieNameandbudget.csv")
+    df = pd.read_csv(path.join(path.dirname(__file__),'static\\data\\movieNameandbudget.csv'))
     return render_template(
         'dataSet1.html',
         title='dataSet1',
@@ -196,7 +196,7 @@ def dataSet1():
 @app.route('/dataSet2')
 def dataSet2():
     #הפעולה הזאת קוראת את קובץ הדאטה ובעזרת אנחנו יכולים להציג למשתמש את הקובץ לאחר מכן
-    df2 = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movienameandincome.csv")
+    df2 = pd.read_csv(path.join(path.dirname(__file__),'static\\data\\movienameandincome.csv'))
     return render_template(
         'dataSet2.html',
         title='dataSet2',
@@ -213,7 +213,7 @@ def query():
 
     form = Producer()
 
-    #הפעולה קוראת את שתי ממאגרי הנתונים 
+    #הפעולה קוראת את שתי ממאגרי הנתונים תאפשר לנו עוד מעט בעזרת הגופיטר להציג למשתמש גרף 
     dfbudget = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movieNameandbudget.csv")
     dfincome = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movienameandincome.csv")
     #מכיוון שהוויזואל סטודיו לא יודע להציג את הגרף כגרף אנחנו צריכים להעביר אותו לתמונה.
@@ -246,7 +246,7 @@ def query():
         #יוצר את הגרף על פי הנתונים שהמשתמש הזין. הגרף יהיה בצורה של גרף עמודות
         df3.plot(ax = ax , kind = 'bar', figsize = (24, 15) , fontsize = 18 , grid = True , color=['black','brown'])
         #בשורה הזאת הגרף הופך לתמונה על יידי פונקציה שמוגדרת למטה בשם 
-        #plot_to_image
+        plot_to_image
         chart = plot_to_img(fig)
 
 
