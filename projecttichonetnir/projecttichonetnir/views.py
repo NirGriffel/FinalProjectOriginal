@@ -130,11 +130,11 @@ def Register():
     form = UserRegistrationFormStructure(request.form)
 
     #התנאי הבוליאני בודק את פרטי המשתמש ברגע שלחץ על כפתור השליחה. 
-    if (request.method == 'POST' and form.validate()):
+    if (request.method == 'POST' ):
         if (not db_Functions.IsUserExist(form.username.data)):
             db_Functions.AddNewUser(form)
             db_table = ""
-            return render_template("Login.html")
+            return redirect('Login')
     #אם משהו מפרטיו היו שגואים המשתמש יקבל הודעת שגיאה חזרה למסך 
         else:
             flash('Error: User with this Username already exist !')
@@ -161,7 +161,7 @@ def Login():
     # אם קיים משתמש כזה בקובץ היא מאפשר לו להתחבר ואם לא היא מקפיצה לו הודעת שגיאה
     if (request.method == 'POST' and form.validate()):
         if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
-            return render_template("index.html")
+            return redirect('home')
 
         else:
             flash('Wrong password and\or username')
@@ -214,8 +214,8 @@ def query():
     form = Producer()
 
     #הפעולה קוראת את שתי ממאגרי הנתונים תאפשר לנו עוד מעט בעזרת הגופיטר להציג למשתמש גרף 
-    dfbudget = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movieNameandbudget.csv")
-    dfincome = pd.read_csv("C:\\Users\\Nir\\source\\repos\\projecttichonetnir\\projecttichonetnir\\projecttichonetnir\\static\\data\\movienameandincome.csv")
+    dfbudget = pd.read_csv(path.join(path.dirname(__file__),'static\\data\\movieNameandbudget.csv'))
+    dfincome = pd.read_csv(path.join(path.dirname(__file__),'static\\data\\movienameandincome.csv'))
     #מכיוון שהוויזואל סטודיו לא יודע להציג את הגרף כגרף אנחנו צריכים להעביר אותו לתמונה.
     # אנחנו מגדירים את זה בהתחלה 'ריק' כדי שבשל מאוחר יותר נוכל להכניס את הגרף לתוכו ולהציג אותו למשתמש. 
     chart = ''

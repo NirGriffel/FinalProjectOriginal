@@ -56,13 +56,20 @@ class LoginFormStructure(FlaskForm):
 ##   the 'submit' button - the button the user will press to have the 
 ##                         form be "posted" (sent to the server for process)
 class UserRegistrationFormStructure(FlaskForm):
-    FirstName  = StringField('First name:  ', [validators.Length(min=2)])
-    LastName   = StringField('Last name:  ' , [validators.Length(min=2)])
-    PhoneNum   = StringField('Phone number:  ' , [validators.Length(min=10,max = 10)])
-    EmailAddr  = StringField('E-Mail:  ' , [validators.Email()])
-    username   = StringField('User name:  ' , validators = [DataRequired()])
-    password   = PasswordField('Password:  ' , [validators.Length(min=2)])
+    FirstName  = StringField('First name:  ')
+    LastName   = StringField('Last name:  ')
+    PhoneNum   = StringField('Phone number:  ')
+    EmailAddr  = StringField('E-Mail:  ')
+    username   = StringField('User name:  ' )
+    password   = PasswordField('Password:  ' )
     submit = SubmitField('Submit')
+
+   # FirstName  = StringField('First name:  ', [validators.Length(min=2)])
+   # LastName   = StringField('Last name:  ' , [validators.Length(min=2)])
+    #PhoneNum   = StringField('Phone number:  ' , [validators.Length(min=10,max = 10)])
+    #EmailAddr  = StringField('E-Mail:  ' , [validators.Email()])
+    #username   = StringField('User name:  ' , validators = [DataRequired()])
+    #password   = PasswordField('Password:  ' , [validators.Length(min=2)])
 
 ## This class have the fields that the user can set, to have the query parameters for analysing the data
 ##   This form is where the user can set different parameters, depand on your project,
