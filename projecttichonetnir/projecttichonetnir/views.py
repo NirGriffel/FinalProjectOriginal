@@ -140,6 +140,7 @@ def Register():
             flash('Error: User with this Username already exist !')
             form = UserRegistrationFormStructure(request.form)
 
+
     return render_template(
         'register.html', 
         form=form, 
