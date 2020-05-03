@@ -130,7 +130,7 @@ def Register():
     form = UserRegistrationFormStructure(request.form)
 
     #התנאי הבוליאני בודק את פרטי המשתמש ברגע שלחץ על כפתור השליחה. 
-    if (request.method == 'POST' ):
+    if (request.method == 'POST' and form.validate()):
         if (not db_Functions.IsUserExist(form.username.data)):
             db_Functions.AddNewUser(form)
             db_table = ""
@@ -214,8 +214,8 @@ def query():
     form = Producer()
 
     #הפעולה קוראת את שתי ממאגרי הנתונים תאפשר לנו עוד מעט בעזרת הגופיטר להציג למשתמש גרף 
-    dfbudget = pd.read_csv(path.join(path.dirname(__file__),'static\\data\\movieNameandbudget.csv'))
-    dfincome = pd.read_csv(path.join(path.dirname(__file__),'static\\data\\movienameandincome.csv'))
+    dfbudget = pd.read_csv(path.join(path.dirname(__file__), 'static/data/movieNameandbudget.csv'))
+    dfincome = pd.read_csv(path.join(path.dirname(__file__), 'static/data/movienameandincome.csv'))
     #מכיוון שהוויזואל סטודיו לא יודע להציג את הגרף כגרף אנחנו צריכים להעביר אותו לתמונה.
     # אנחנו מגדירים את זה בהתחלה 'ריק' כדי שבשל מאוחר יותר נוכל להכניס את הגרף לתוכו ולהציג אותו למשתמש. 
     chart = ''
