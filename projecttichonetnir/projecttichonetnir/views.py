@@ -214,8 +214,8 @@ def query():
     form = Producer()
 
     #הפעולה קוראת את שתי ממאגרי הנתונים תאפשר לנו עוד מעט בעזרת הגופיטר להציג למשתמש גרף 
-    dfbudget = pd.read_csv(path.join(path.dirname(__file__), 'static/data/movieNameandbudget.csv'))
-    dfincome = pd.read_csv(path.join(path.dirname(__file__), 'static/data/movienameandincome.csv'))
+    dfbudget = pd.read_csv(path.join(path.dirname(__file__), 'static\\data\\movieNameandbudget.csv'))
+    dfincome = pd.read_csv(path.join(path.dirname(__file__), 'static\\data\\movienameandincome.csv'))
     #מכיוון שהוויזואל סטודיו לא יודע להציג את הגרף כגרף אנחנו צריכים להעביר אותו לתמונה.
     # אנחנו מגדירים את זה בהתחלה 'ריק' כדי שבשל מאוחר יותר נוכל להכניס את הגרף לתוכו ולהציג אותו למשתמש. 
     chart = ''
@@ -246,7 +246,7 @@ def query():
         #יוצר את הגרף על פי הנתונים שהמשתמש הזין. הגרף יהיה בצורה של גרף עמודות
         df3.plot(ax = ax , kind = 'bar', figsize = (24, 15) , fontsize = 18 , grid = True , color=['black','brown'])
         #בשורה הזאת הגרף הופך לתמונה על יידי פונקציה שמוגדרת למטה בשם 
-        plot_to_image
+        #plot_to_image
         chart = plot_to_img(fig)
 
 
