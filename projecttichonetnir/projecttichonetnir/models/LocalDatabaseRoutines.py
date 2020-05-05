@@ -34,6 +34,7 @@ class LocalDatabaseServiceRoutines(object):
         # Load the database of users
         df = self.ReadCSVUsersDB()
         df = df.set_index('username')
+        print("user exist")
         return (UserName in df.index.values)
 
 # -------------------------------------------------------

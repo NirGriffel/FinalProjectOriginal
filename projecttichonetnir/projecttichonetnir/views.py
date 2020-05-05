@@ -130,15 +130,15 @@ def Register():
     form = UserRegistrationFormStructure(request.form)
 
     #התנאי הבוליאני בודק את פרטי המשתמש ברגע שלחץ על כפתור השליחה. 
-    if (request.method == 'POST' and form.validate()):
-        if (not db_Functions.IsUserExist(form.username.data)):
-            db_Functions.AddNewUser(form)
-            db_table = ""
-            return redirect('Login')
+    if  request.method == 'POST':
+            if (not db_Functions.IsUserExist(form.username.data)):
+                db_Functions.AddNewUser(form)
+                db_table = ""
+                return redirect('login')
     #אם משהו מפרטיו היו שגואים המשתמש יקבל הודעת שגיאה חזרה למסך 
-        else:
-            flash('Error: User with this Username already exist !')
-            form = UserRegistrationFormStructure(request.form)
+            else:
+                flash('Error: User with this Username already exist !')
+                form = UserRegistrationFormStructure(request.form)
 
 
     return render_template(
