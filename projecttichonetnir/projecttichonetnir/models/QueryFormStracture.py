@@ -71,7 +71,7 @@ class UserRegistrationFormStructure(FlaskForm):
 ##   The fields that will be part of this form are specific to your project
 ##   Please complete this class according to your needs
 ##   the 'submit' button - the button the user will press to have the 
-##                         form be "posted" (sent to the server for process)
+##                        form be "posted" (sent to the server for process)
 
 
 class Producer(FlaskForm):
