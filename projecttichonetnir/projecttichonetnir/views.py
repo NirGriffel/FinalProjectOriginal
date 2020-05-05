@@ -218,8 +218,9 @@ def query():
     dfbudget = pd.read_csv(path.join(path.dirname(__file__), 'static\\data\\movieNameandbudget.csv'))
     dfincome = pd.read_csv(path.join(path.dirname(__file__), 'static\\data\\movienameandincome.csv'))
     #מכיוון שהוויזואל סטודיו לא יודע להציג את הגרף כגרף אנחנו צריכים להעביר אותו לתמונה.
-    # אנחנו מגדירים את זה בהתחלה 'ריק' כדי שבשל מאוחר יותר נוכל להכניס את הגרף לתוכו ולהציג אותו למשתמש. 
+    # אנחנו מגדירים את זה בהתחלה 'ריק' כדי שבשלב מאוחר יותר נוכל להכניס את הגרף לתוכו ולהציג אותו למשתמש. 
     chart = ''
+    raw_data_table = ''
 
     #ברגע שהמשתמש לוחץ אישור לאחר שהזין את הפרטים  מתחיל עריכה של קובץ האקסל לפי הנתונים שהמשתמש ביקש ולאחר מכן הנתונים מוצג בגרף   
     if request.method == 'POST':
@@ -250,15 +251,26 @@ def query():
         #plot_to_image
         chart = plot_to_img(fig)
 
+        df4 = df3
+        df4 = df4.drop(['genre','summary'],1)
+        df4['attitude'] = (df4['income'] / df4['budget']*100) 
+        df4['attitude'] = df4['attitude'].astype(str) + '%'
+        #df4 = df4.drop(['budget','income'],1)
 
+        raw_data_table = df4.to_html(classes = 'table table-hover')
+        
 
+        
+        
     return render_template(
         'query.html', 
         form=form, 
         title='',
         year=datetime.now().year,
         repository_name='Pandas',
-        chart = chart
+        chart = chart,
+        raw_data_table = raw_data_table
+        
         )
 
 #הפעולה הופכת את הגרף לתמונה בדף ה
