@@ -255,7 +255,6 @@ def query():
         df4 = df4.drop(['genre','summary'],1)
         df4['attitude'] = (df4['income'] / df4['budget']*100) 
         df4['attitude'] = df4['attitude'].astype(str) + '%'
-        #df4 = df4.drop(['budget','income'],1)
 
         raw_data_table = df4.to_html(classes = 'table table-hover')
         

@@ -18,8 +18,10 @@
 <br />
 <br />
 
-<div class="row">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<div class="row">
     <div class="col-md-4">
         <form method="post">
             {{ form.csrf_token }}
@@ -32,6 +34,7 @@
     <div class="col-md-8">
         <div class="row">
             <h4>The attitude between the movie income to the movie budget</h4>
+            <p1> you can see the table down for more information </p1>
             <img src={{ chart }} class="img-thumbnail" alt="not found">
             {{raw_data_table | safe}}
         </div>
@@ -62,6 +65,5 @@
         background-size: cover;
         color: white;
     }
-
 </style>
             {% endblock %}
