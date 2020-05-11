@@ -130,7 +130,7 @@ def Register():
     form = UserRegistrationFormStructure(request.form)
 
     #התנאי הבוליאני בודק את פרטי המשתמש ברגע שלחץ על כפתור השליחה. 
-    if  request.method == 'POST':
+    if  (request.method == 'POST'):
             if (not db_Functions.IsUserExist(form.username.data)):
                 db_Functions.AddNewUser(form)
                 db_table = ""
@@ -138,9 +138,7 @@ def Register():
     #אם משהו מפרטיו היו שגואים המשתמש יקבל הודעת שגיאה חזרה למסך 
             else:
                 flash('Error: User with this Username already exist !')
-                form = UserRegistrationFormStructure(request.form)
-
-
+  
     return render_template(
         'register.html', 
         form=form, 
@@ -251,15 +249,13 @@ def query():
         #plot_to_image
         chart = plot_to_img(fig)
 
-        df4 = df3
+        df4 = df3.reset_index()
         df4 = df4.drop(['genre','summary'],1)
         df4['attitude'] = (df4['income'] / df4['budget']*100) 
+        df4 = df4.round()
         df4['attitude'] = df4['attitude'].astype(str) + '%'
 
         raw_data_table = df4.to_html(classes = 'table table-hover')
-        
-
-        
         
     return render_template(
         'query.html', 
