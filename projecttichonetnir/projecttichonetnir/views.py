@@ -251,10 +251,11 @@ def query():
 
         df4 = df3.reset_index()
         df4 = df4.drop(['genre','summary'],1)
+        #הפעולה מחשבת את היחס בין ההכנסה(נטו) לבין ההוצאה(התקציב) של הסרט
         df4['attitude'] = (df4['income'] / df4['budget']*100) 
         df4 = df4.round()
         df4['attitude'] = df4['attitude'].astype(str) + '%'
-
+        #הפעולה מכניסה את הדאטה לטבלה כדי שנוכל להציג אותה בשלב מאוחר יותר בדף הקוורי למשתמש
         raw_data_table = df4.to_html(classes = 'table table-hover')
         
     return render_template(
